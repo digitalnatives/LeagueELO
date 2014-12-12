@@ -6,7 +6,7 @@ ActiveAdmin.register Match do
   end
 
   form do |f|
-    f.inputs "team a" do
+    f.inputs "Player" do
       f.has_many :players, allow_destroy: true, new_record: "Add Player" do |e|
         e.input :player, as: :select2_multiple
       end
