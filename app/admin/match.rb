@@ -1,10 +1,10 @@
 ActiveAdmin.register Match do
-  permit_params :status, :score_a, :score_b, :draws, team_a_player_ids: [], team_b_player_ids: []
+  permit_params :score_a, :score_b, :draws, team_a_player_ids: [], team_b_player_ids: []
 
   form do |f|
-    f.inputs "Match" do
-      f.input :status
+    f.semantic_errors *f.object.errors.keys
 
+    f.inputs "Match" do
       f.input :team_a_player_ids, label: 'Team A', as: :select2, collection: Player.all, input_html: { multiple: true }
       f.input :team_b_player_ids, label: 'Team B', as: :select2, collection: Player.all, input_html: { multiple: true }
 
@@ -25,7 +25,7 @@ ActiveAdmin.register Match do
   end
 
   action_item only: :show do
-    link_to 'Close', close_admin_match_path(match) unless match.closed?
+    link_to 'Close', close_admin_match_path(match) if match.can_close?
   end
 
 end
