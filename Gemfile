@@ -1,39 +1,22 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.1.4'
-
 gem 'pg'
-
 gem 'sass-rails', '~> 4.0.3'
-
 gem 'uglifier', '>= 1.3.0'
-
 gem 'coffee-rails', '~> 4.0.0'
-
 gem 'jquery-rails'
-
 gem 'turbolinks'
-
 gem 'jbuilder', '~> 2.0'
-
 gem 'sdoc', '~> 0.4.0', group: :doc
-
 gem 'devise', '~> 3.3.0'
-
 gem 'seed_dump', '~> 3.2.0'
-
 gem 'activeadmin', github: 'activeadmin'
-
 gem 'active_skin', '~> 0.0.7'
-
 gem 'carrierwave-dropbox', '~> 1.2.1'
-
 gem 'annotate', '~> 2.6.5'
-
 gem "schema_plus", '~> 1.6.0'
-
 gem 'haml'
-
 gem 'rails_12factor', group: :production
 
 # Use ActiveModel has_secure_password
