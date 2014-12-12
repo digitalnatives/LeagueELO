@@ -19,6 +19,8 @@ gem "schema_plus", '~> 1.6.0'
 gem 'haml'
 gem 'rails_12factor', group: :production
 gem 'dotenv-rails'
+gem 'select2-rails'
+gem 'activeadmin-select2', github: 'mfairburn/activeadmin-select2'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
