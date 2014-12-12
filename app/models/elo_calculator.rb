@@ -8,7 +8,7 @@ class EloCalculator
     @m =  w1 + w2 + d
   end
 
-  def calculate
+  def delta
     K * (w1 - m * e1)
   end
 
