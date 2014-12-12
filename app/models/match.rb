@@ -7,8 +7,6 @@ class Match < ActiveRecord::Base
   has_many :team_a_players, through: :team_a_match_players, class_name: 'Player', source: :player
   has_many :team_b_players, through: :team_b_match_players, class_name: 'Player', source: :player
 
-  accepts_nested_attributes_for :team_a_match_players
-
   def close!
     transaction do
       store_points_on_join!

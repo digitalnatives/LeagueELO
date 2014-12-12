@@ -1,19 +1,14 @@
 ActiveAdmin.register Match do
-  permit_params :status, :team_a_avg_point, :team_b_avg_point, :team_a_match_players
+  permit_params :status, team_a_player_ids: [], team_b_player_ids: []
 
   form do |f|
-    f.input :player, as: :select2
-  end
-
-  form do |f|
-    f.inputs "Player" do
-      f.input :team_a_avg_point
-      f.input :team_b_avg_point
+    f.inputs "Match" do
       f.input :status
-      f.has_many :team_a_match_players, allow_destroy: true, new_record: "Add Player" do |e|
-        e.input :player, as: :select2_multiple
-      end
+
+      f.input :team_a_player_ids, label: 'Team A', as: :select2, collection: Player.all, input_html: { multiple: true }
+      f.input :team_b_player_ids, label: 'Team B', as: :select2, collection: Player.all, input_html: { multiple: true }
     end
+
     f.actions
   end
 end
