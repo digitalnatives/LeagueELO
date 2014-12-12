@@ -7,6 +7,8 @@ class Match < ActiveRecord::Base
   has_many :team_a_players, through: :team_a_match_players, class_name: 'Player', source: :player
   has_many :team_b_players, through: :team_b_match_players, class_name: 'Player', source: :player
 
+  validate :validate_player_uniqueness
+
   def close!
     transaction do
       store_points_on_join!
@@ -21,7 +23,19 @@ class Match < ActiveRecord::Base
     status == 'closed'
   end
 
+  def can_close?
+    has_score? && !closed?
+  end
+
+  def has_score?
+    score_a + score_b + draws > 0
+  end
+
   private
+
+  def validate_player_uniqueness
+    errors.add :players, 'should be unique across teams.' unless players.count == players.uniq.count
+  end
 
   def recalculate_averages
     a_points = team_a_players.map(&:point)
