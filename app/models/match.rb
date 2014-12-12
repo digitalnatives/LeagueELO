@@ -17,6 +17,10 @@ class Match < ActiveRecord::Base
     end
   end
 
+  def closed?
+    status == 'closed'
+  end
+
   private
 
   def recalculate_averages
