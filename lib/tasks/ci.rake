@@ -10,7 +10,6 @@ if Rails.env.in? %w(development test)
       task commit: :clean do
         with_sample_dotenv do
           Rake::Task['db:create'].invoke
-          Rake::Task['db:migrate'].invoke
           Rake::Task['db:schema:load'].invoke
           Rake::Task['ci:build:rspec_internal'].invoke
         end
