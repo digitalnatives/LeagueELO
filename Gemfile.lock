@@ -1,11 +1,4 @@
 GIT
-  remote: git://github.com/IxDay/bootstrap-sass-superhero.git
-  revision: d6b582d2f3fddd4f6efaeb40044203cb23ab0f8a
-  specs:
-    bootstrap-sass (3.2.0.2)
-      sass (~> 3.2)
-
-GIT
   remote: git://github.com/activeadmin/activeadmin.git
   revision: ab89f1da1c9a644ce5725c7abea2f2656ce70c6b
   specs:
@@ -77,6 +70,10 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-sass (3.2.0.2)
+      sass (~> 3.2)
+    bootswatch-rails (3.2.4)
+      railties (>= 3.1)
     bourbon (3.2.3)
       sass (~> 3.2)
       thor
@@ -315,7 +312,8 @@ DEPENDENCIES
   autoprefixer-rails
   better_errors
   binding_of_caller
-  bootstrap-sass (~> 3.2.0)!
+  bootstrap-sass (~> 3.2.0)
+  bootswatch-rails
   byebug
   carrierwave-dropbox (~> 1.2.1)
   coffee-rails (~> 4.0.0)
