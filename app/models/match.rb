@@ -1,6 +1,6 @@
 class Match < ActiveRecord::Base
   has_many :match_players
-  has_many :players, through: :match_players
+  has_many :players, through: :match_players, dependent: :destroy
 
   has_many :team_a_match_players, -> { where(team: 'A') }, class_name: 'MatchPlayer'
   has_many :team_b_match_players, -> { where(team: 'B') }, class_name: 'MatchPlayer'
@@ -8,6 +8,9 @@ class Match < ActiveRecord::Base
   has_many :team_b_players, through: :team_b_match_players, class_name: 'Player', source: :player
 
   validate :validate_player_uniqueness
+  validates :score_a, :score_b, :draws, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validates :team_a_players, presence: true
+  validates :team_b_players, presence: true
 
   def close!
     transaction do
@@ -32,6 +35,10 @@ class Match < ActiveRecord::Base
   end
 
   private
+
+  def validate_player_uniqueness
+    errors.add :players, 'should be unique across teams.' unless players.count == players.uniq.count
+  end
 
   def validate_player_uniqueness
     errors.add :players, 'should be unique across teams.' unless players.count == players.uniq.count
