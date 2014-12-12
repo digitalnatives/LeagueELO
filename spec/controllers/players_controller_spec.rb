@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe PlayerController, :type => :controller do
+describe PlayersController, :type => :controller do
 
   describe "GET index" do
     it "returns http success" do
@@ -8,5 +8,4 @@ RSpec.describe PlayerController, :type => :controller do
       expect(response).to be_success
     end
   end
-
 end

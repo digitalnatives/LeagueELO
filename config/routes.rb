@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  resources :player, only: [:index, :show]
-  resources :match, only: [:index]
+  resources :players, only: [:index, :show]
+  resources :matches, except: [:destroy]
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  root 'player#index'
+  root 'players#index'
 end

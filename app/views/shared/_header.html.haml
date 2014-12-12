@@ -9,4 +9,6 @@
     .navbar-collapse.collapse.navbar-responsive-collapse
       %ul.nav.navbar-nav
         %li.active
-          %a{:href => "#"} LeaderBoards
+          %a{:href => "#"} LeaderBoard
+        %li
+          = link_to 'Create a Match', new_match_path

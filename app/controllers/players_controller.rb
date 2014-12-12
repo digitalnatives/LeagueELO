@@ -1,4 +1,4 @@
-class PlayerController < ApplicationController
+class PlayersController < ApplicationController
   def index
     @players = Player.order('point DESC')
     @matches = Match.closed.order('created_at DESC').limit(10)
