@@ -18,6 +18,7 @@ gem 'annotate', '~> 2.6.5'
 gem "schema_plus", '~> 1.6.0'
 gem 'haml'
 gem 'rails_12factor', group: :production
+gem 'dotenv-rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -35,7 +36,6 @@ group :development, :test do
   gem 'shoulda'
   gem 'byebug'
   gem 'pry-byebug'
-  gem 'dotenv-rails'
   gem "better_errors"
   gem "binding_of_caller"
   gem 'rspec-rails', '~> 3.0.0'
