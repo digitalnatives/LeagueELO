@@ -12,6 +12,8 @@ class Match < ActiveRecord::Base
   validates :team_a_players, presence: true
   validates :team_b_players, presence: true
 
+  scope :closed, -> { where(status: 'closed') }
+
   def close!
     transaction do
       store_points_on_join!
