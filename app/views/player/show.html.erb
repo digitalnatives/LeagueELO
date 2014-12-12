@@ -1,0 +1,24 @@
+<h1><%= @player.name %></h1>
+
+<table>
+  <tr>
+    <td>Position</td>
+    <td><%= @player.position %></td>
+  </tr>
+  <tr>
+    <td>Point</td>
+    <td><%= @player.point.to_i %></td>
+  </tr>
+  <tr>
+    <td>Matches</td>
+    <td><%= @player.matches.closed.count %></td>
+  </tr>
+  <tr>
+    <td>Wins</td>
+    <td><%= @player.win_count %></td>
+  </tr>
+  <tr>
+    <td>Defeats</td>
+    <td><%= @player.defeat_count %></td>
+  </tr>
+</table>
