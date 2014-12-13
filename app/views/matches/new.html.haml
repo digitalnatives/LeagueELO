@@ -1,25 +1,2 @@
 .well
-  = form_for @match, html: { role: 'form' } do |f| 
-    %fieldset
-      %legend Create a Match
-      .row
-        .col-md-6
-          .form-group
-            = f.label :team_a_player_ids, 'Team A', class: 'control-label'
-            = f.select :team_a_player_ids, players_for_select, { }, { class: 'form-control select2', multiple: true }
-        .col-md-6
-          .form-group
-            = f.label :team_b_player_ids, 'Team B', class: 'control-label'
-            = f.select :team_b_player_ids, players_for_select, { }, { class: 'form-control select2', multiple: true }
-      .row
-        .col-md-6
-          .form-group
-            = f.label :score_a, 'Score A', class: 'control-label'
-            = f.number_field :score_a, class: 'form-control'
-        .col-md-6
-          .form-group
-            = f.label :score_b, 'Score B', class: 'control-label'
-            = f.number_field :score_b, class: 'form-control'
-      .form-group.text-center
-        %button.btn.btn-default Cancel
-        %button.btn.btn-primary{:type => "submit"} Submit
+  = render 'form'

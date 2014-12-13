@@ -1,0 +1,21 @@
+%h1= @player.name
+
+.row
+  .col-md-3
+    %table.table.table-striped.table-hover
+      %tr
+        %td Position
+        %td= @player.position
+      %tr
+        %td Point
+        %td= @player.point.to_i
+      %tr
+        %td Matches
+        %td= @player.matches.closed.count
+      %tr
+        %td Wins
+        %td= @player.win_count
+      %tr
+        %td Defeats
+        %td= @player.defeat_count
+  .col-md-9

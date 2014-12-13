@@ -1,10 +1,4 @@
 class MatchesController < ApplicationController
-  def index
-  end
-
-  def show
-  end
-
   def new
     @match = Match.new
   end
@@ -24,9 +18,9 @@ class MatchesController < ApplicationController
     params.require(:match).permit(
       :score_a,
       :score_b,
+      :draws,
       :team_a_player_ids => [],
       :team_b_player_ids => []
     )
   end
-  
 end

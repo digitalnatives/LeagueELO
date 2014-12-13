@@ -1,0 +1,15 @@
+= form_for @player, html: { role: 'form' } do |f|
+  - if @player.errors.size > 0
+    .alert.alert-danger(role='alert')
+      %button.close{"data-dismiss" => "alert", :type => "button"}
+        %span{"aria-hidden" => "true"} &times;
+        %span.sr-only Close
+      = @player.errors.full_messages.join(', ')
+  %fieldset
+    %legend Create a Player
+    .form-group{ class: @player.errors[:name].blank? ? '' : 'has-error' }
+      = f.label :name, class: 'control-label'
+      = f.text_field :name, class: 'form-control'
+    .form-group.text-center
+      %button.btn.btn-default Cancel
+      %button.btn.btn-primary{:type => "submit"} Submit

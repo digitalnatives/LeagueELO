@@ -8,4 +8,22 @@ class PlayersController < ApplicationController
     @player = Player.find(params[:id])
     @player.count_results!
   end
+
+  def new
+    @player = Player.new
+  end
+
+  def create
+    @player = Player.create(player_params)
+
+    if @player.valid?
+      redirect_to root_path
+    else
+      render action: :new
+    end
+  end
+
+  def player_params
+    params.require(:player).permit(:name)
+  end
 end

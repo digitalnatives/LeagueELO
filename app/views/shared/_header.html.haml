@@ -5,10 +5,10 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      %a.navbar-brand{:href => "#"} League Lo
+      = link_to 'League Lo', root_path, class: 'navbar-brand'
     .navbar-collapse.collapse.navbar-responsive-collapse
       %ul.nav.navbar-nav
-        %li.active
-          %a{:href => "#"} LeaderBoard
-        %li
+        %li{class: params[:controller] == 'players' ? 'active' : ''}
+          = link_to 'LeaderBoard', root_path
+        %li{class: params[:controller] == 'matches' ? 'active' : ''}
           = link_to 'Create a Match', new_match_path

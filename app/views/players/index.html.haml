@@ -1,6 +1,8 @@
 .container
   .row
     .col-md-6
+      .pull-right
+        = link_to 'New Player', new_player_path, class: 'btn btn-warning'
       %h1 Leaderboard
       %table.table.table-striped.table-hover.col-md-6
         %thead
@@ -14,6 +16,8 @@
               %td= link_to player.name, player
               %td= player.point.to_i
     .col-md-6
+      .pull-right
+        = link_to 'New Match', new_match_path, class: 'btn btn-warning'
       %h1 Recent matches
       %table.table.table-striped.table-hover.col-md-6
         %thead

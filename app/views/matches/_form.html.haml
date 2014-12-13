@@ -1,0 +1,34 @@
+= form_for @match, html: { role: 'form' } do |f|
+  - if @match.errors.size > 0
+    .alert.alert-danger(role='alert')
+      %button.close{"data-dismiss" => "alert", :type => "button"}
+        %span{"aria-hidden" => "true"} &times;
+        %span.sr-only Close
+      = @match.errors.full_messages.join(', ')
+  %fieldset
+    %legend Create a Match
+    .row
+      .col-md-5
+        .form-group{ class: @match.errors[:team_a_players].blank? ? '' : 'has-error' }
+          = f.label :team_a_player_ids, 'Team A', class: 'control-label'
+          = f.select :team_a_player_ids, players_for_select, { }, { class: 'form-control select2', multiple: true }
+      .col-md-5.col-md-offset-2
+        .form-group{ class: @match.errors[:team_b_players].blank? ? '' : 'has-error' }
+          = f.label :team_b_player_ids, 'Team B', class: 'control-label'
+          = f.select :team_b_player_ids, players_for_select, { }, { class: 'form-control select2', multiple: true }
+    .row
+      .col-md-5
+        .form-group{ class: @match.errors[:score_a].blank? ? '' : 'has-error' }
+          = f.label :score_a, 'Wins', class: 'control-label'
+          = f.number_field :score_a, class: 'form-control'
+      .col-md-2
+        .form-group{ class: @match.errors[:score_a].blank? ? '' : 'has-error' }
+          = f.label :draws, 'Draws', class: 'control-label'
+          = f.number_field :draws, class: 'form-control'
+      .col-md-5
+        .form-group{ class: @match.errors[:score_a].blank? ? '' : 'has-error' }
+          = f.label :score_b, 'Wins', class: 'control-label'
+          = f.number_field :score_b, class: 'form-control'
+    .form-group.text-center
+      %button.btn.btn-default Cancel
+      %button.btn.btn-primary{:type => "submit"} Submit

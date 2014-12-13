@@ -39,7 +39,9 @@ class Match < ActiveRecord::Base
   private
 
   def validate_player_uniqueness
-    errors.add :players, 'should be unique across teams.' unless players.size == players.uniq.size
+    unless player_ids.size == player_ids.uniq.size
+      errors.add :players, 'should be unique across teams.'
+    end
   end
 
   def recalculate_averages
