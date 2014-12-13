@@ -7,3 +7,16 @@
 @import "bootstrap";
 @import "bootswatch/superhero/bootswatch";
 @import "base";
+
+.foosball-middle img {
+  max-width: 100%;
+}
+
+@media (min-width: 992px) {
+  .form-group.team {
+    padding-top: 90px;
+  }
+  .row.like-form-group {
+    margin-bottom: 25px;
+  }
+}

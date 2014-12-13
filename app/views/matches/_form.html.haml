@@ -7,28 +7,31 @@
       = @match.errors.full_messages.join(', ')
   %fieldset
     %legend Create a Match
-    .row
-      .col-md-5
-        .form-group{ class: @match.errors[:team_a_players].blank? ? '' : 'has-error' }
+    .row.like-form-group
+      .col-md-4.text-right
+        .form-group.team{ class: @match.errors[:team_a_players].blank? ? '' : 'has-error' }
           = f.label :team_a_player_ids, 'Team A', class: 'control-label'
           = f.select :team_a_player_ids, players_for_select, { }, { class: 'form-control select2', multiple: true }
-      .col-md-5.col-md-offset-2
-        .form-group{ class: @match.errors[:team_b_players].blank? ? '' : 'has-error' }
+        .form-group{ class: @match.errors[:score_a].blank? ? '' : 'has-error' }
+          = f.label :score_a, 'A Wins', class: 'control-label'
+          = f.number_field :score_a, class: 'form-control'
+      .col-md-4.text-center.foosball-middle
+        .hidden-sm.hidden-xs= image_tag 'foosball_table_vertical.png'
+        .hidden-md.hidden-lg= image_tag 'foosball_table_horizontal.png'
+      .col-md-4.text-left
+        .form-group.team{ class: @match.errors[:team_b_players].blank? ? '' : 'has-error' }
           = f.label :team_b_player_ids, 'Team B', class: 'control-label'
           = f.select :team_b_player_ids, players_for_select, { }, { class: 'form-control select2', multiple: true }
-    .row
-      .col-md-5
         .form-group{ class: @match.errors[:score_a].blank? ? '' : 'has-error' }
-          = f.label :score_a, 'Wins', class: 'control-label'
-          = f.number_field :score_a, class: 'form-control'
-      .col-md-2
+          = f.label :score_b, 'B Wins', class: 'control-label'
+          = f.number_field :score_b, class: 'form-control'
+    .row.hidden
+      .col-md-2.col-md-offset-3.text-right
+      .col-md-2.text-center
         .form-group{ class: @match.errors[:score_a].blank? ? '' : 'has-error' }
           = f.label :draws, 'Draws', class: 'control-label'
           = f.number_field :draws, class: 'form-control'
-      .col-md-5
-        .form-group{ class: @match.errors[:score_a].blank? ? '' : 'has-error' }
-          = f.label :score_b, 'Wins', class: 'control-label'
-          = f.number_field :score_b, class: 'form-control'
+      .col-md-2
     .form-group.text-center
       %button.btn.btn-default Cancel
       %button.btn.btn-primary{:type => "submit"} Submit
