@@ -47,7 +47,7 @@ class Match < ActiveRecord::Base
   def recalculate_averages
     a_points = team_a_players.map(&:point)
     self.team_a_avg_point = a_points.sum.to_f / a_points.size
-    b_points = team_a_players.map(&:point)
+    b_points = team_b_players.map(&:point)
     self.team_b_avg_point = b_points.sum.to_f / b_points.size
   end
 
