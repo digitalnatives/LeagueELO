@@ -33,4 +33,4 @@
                 = match.score_a
                 \- #{match.score_b}
               %td= match.team_b_players.map(&:name).join(', ')
-              %td= match.updated_at.to_formatted_s(:short)
+              %td= match.created_at.to_formatted_s(:short)
