@@ -28,4 +28,9 @@ class Player < ActiveRecord::Base
       end
     end
   end
+
+  def self.find_by_nick_or_name(nick_or_name)
+    where("nickname = :nick_or_name OR name = :nick_or_name",
+          nick_or_name: nick_or_name).first
+  end
 end

@@ -12,6 +12,9 @@ class Match < ActiveRecord::Base
   validates :team_a_players, presence: true
   validates :team_b_players, presence: true
 
+  attr_accessor :team_a_player_names, :team_b_player_names
+  before_validation :generate_player_ids
+
   scope :closed, -> { where(status: 'closed') }
 
   def close!
@@ -70,4 +73,16 @@ class Match < ActiveRecord::Base
       mp.update_attribute(:current_point, mp.player.point)
     end
   end
+
+  def generate_player_ids
+    %i(a b).each do |team_name|
+      if (player_names = public_send(:"team_#{team_name}_player_names")).present?
+        ids = player_names.split(' ').map do |player_name|
+          Player.find_by_nick_or_name(player_name).try(:id)
+        end
+        public_send(:"team_#{team_name}_player_ids=", ids)
+      end
+    end
+  end
+
 end
